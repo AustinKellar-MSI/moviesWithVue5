@@ -1,0 +1,34 @@
+{{ extend 'layout.html'}}
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<link rel="stylesheet" href="{{=URL('static', 'font-awesome-4.6.3/css/font-awesome.min.css')}}">
+
+<div id="app">
+    <div class="insert-movie">
+        <input v-model="newMovieTitle" type="text" placeholder="Title"/><br><br>
+        <textarea v-model="newMovieDescription" placeholder="Description"></textarea><br><br>
+        <input v-model="newMovieRating" type="text" placeholder="Rating"/><br><br>
+        <button v-on:click="submitMovie">Submit Movie</button>
+    </div><br><br>
+
+    <h1>Movies</h1>
+    
+    <div class="movies">
+        <div v-for="movie in movies" class="movie-box">
+            <div v-if="!movie.editing">
+                <p>${ movie.title }</p>
+                <p>${ movie.description }</p>
+                <p>${ movie.rating }</p>
+                <i class="fa fa-pencil-square-o" v-on:click="editMovie(movie._idx)"></i>
+            </div>
+            <div v-if="movie.editing">
+                <input type="text" v-model="movie.title"/>
+                <textarea v-model="movie.description"></textarea>
+                <input type="text" v-model="movie.rating"/>
+                <button v-on:click="saveMovie(movie._idx)">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{{=URL('static','js/index.js')}}"></script>
+

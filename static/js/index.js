@@ -48,6 +48,7 @@ var editMovie = function(idx) {
 
 var saveMovie = function(idx) {
     app.movies[idx].editing = false;
+    // make request to server here to save changes in database
 };
 
 // here, we define the Vue variable. Remember, only the fields defined here (in data and methods) are 

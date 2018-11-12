@@ -39,7 +39,13 @@ var editMovie = function(idx) {
 
 var saveMovie = function(idx) {
     app.movies[idx].editing = false;
-    // make request to server here to save changes in database
+    var movieToUpdate = app.movies[idx];
+    $.post(updateMovieUrl, {
+        id: movieToUpdate.id,
+        title: movieToUpdate.title,
+        description: movieToUpdate.description,
+        rating: movieToUpdate.rating
+     });
 };
 
 var app = new Vue({

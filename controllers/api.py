@@ -25,3 +25,11 @@ def get_all_movies():
 
 
     return response.json(dict(movies=movie_list)) # return all movies as a JSON object back to JavaScript
+
+def update_movie():
+    db(db.movies.id == request.vars.id).update(
+        title=request.vars.title,
+        description=request.vars.description,
+        rating=request.vars.rating
+    )
+    return "movie updated"

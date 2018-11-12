@@ -19,7 +19,7 @@ var processMovies = function() {
 };
 
 var onPageLoad = function() {
-    $.getJSON('/moviesWithVue3/api/get_all_movies/',
+    $.getJSON(getMoviesUrl,
         function(response) {
             app.movies = response.movies;
             processMovies();
@@ -33,7 +33,7 @@ var insertMovie = function() {
         description: app.newMovieDescription,
         rating: app.newMovieRating
     };
-    $.post('/moviesWithVue3/api/insert_movie/', newMovie, function(response) { 
+    $.post(insertMoviesUrl, newMovie, function(response) { 
         // the server responded with the id number of the new movie in the database. make sure to add this to the
         // new movie object before we add it to the view
         newMovie['id'] = response.new_movie_id;

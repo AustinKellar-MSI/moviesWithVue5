@@ -1,6 +1,10 @@
 {{ extend 'layout.html'}}
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 <link rel="stylesheet" href="{{=URL('static', 'font-awesome-4.6.3/css/font-awesome.min.css')}}">
+<script>
+    var getMoviesUrl = "{{=URL('api', 'get_all_movies')}}";
+    var insertMoviesUrl = "{{=URL('api', 'insert_movie')}}";
+</script>
 
 <div id="app">
     <div class="insert-movie">
